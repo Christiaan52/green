@@ -46,7 +46,7 @@ public class SATCanonizerTest {
 	private void check(Expression expression, String full, String... expected) {
 		Instance i = new Instance(solver, null, null, expression);
 		Expression e = i.getExpression();
-		assertTrue(e.equals(expression))SATCanonizerTest;
+		assertTrue(e.equals(expression));
 		assertEquals(expression.toString(), e.toString());
 		assertEquals(full, i.getFullExpression().toString());
 		Object result = i.request("sat");
@@ -301,6 +301,7 @@ public class SATCanonizerTest {
 		Operation o1 = new Operation(Operation.Operator.LE, c1, c1);
 		Operation o2 = new Operation(Operation.Operator.LT, v1, c1);
 		Operation o3 = new Operation(Operation.Operator.AND, o1, o2);
-		check(o3, "(2<=2)&&(aa<2)", "1*v+-1<0");
+		check(o3, "(2<=2)&&(aa<2)", "1*v+-1<=0");
 	}
+
 }
