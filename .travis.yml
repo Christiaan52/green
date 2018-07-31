@@ -10,7 +10,9 @@ services:
   - docker
 
 before_install:
+  - docker ps -aq -f status=exited
   - docker build -t christiaan52/green .
+
 
 script:
   - docker run christiaan52/green /bin/sh -c "ant; ant test"
